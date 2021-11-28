@@ -1,3 +1,4 @@
+import type { LinksFunction } from "remix";
 import {
   Link,
   Links,
@@ -6,12 +7,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch
+  useCatch,
 } from "remix";
-import type { LinksFunction } from "remix";
-
-import globalStylesUrl from "~/styles/global.css";
 import darkStylesUrl from "~/styles/dark.css";
+import globalStylesUrl from "~/styles/global.css";
 
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {
@@ -20,8 +19,8 @@ export let links: LinksFunction = () => {
     {
       rel: "stylesheet",
       href: darkStylesUrl,
-      media: "(prefers-color-scheme: dark)"
-    }
+      media: "(prefers-color-scheme: dark)",
+    },
   ];
 };
 
@@ -95,7 +94,7 @@ export function CatchBoundary() {
 
 function Document({
   children,
-  title
+  title,
 }: {
   children: React.ReactNode;
   title?: string;
@@ -131,6 +130,9 @@ function Layout({ children }: { children: React.ReactNode }) {
             <ul>
               <li>
                 <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/posts">Posts</Link>
               </li>
               <li>
                 <a href="https://remix.run/docs">Remix Docs</a>
